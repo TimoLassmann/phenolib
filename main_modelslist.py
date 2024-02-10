@@ -98,7 +98,7 @@ def main():
     modelsListFile = 'resources/example_models.list'
     modelsList = ModelsList(modelsListFile)
 
-    max, maxVal = modelsList.getBestModelForTerm('HP:0000395', 'lin')
+    max, maxVal = modelsList.getBestModelForTerm('HP:0000252', 'lin')
     if max:
         print('{} - {}'.format(max, maxVal))
 
