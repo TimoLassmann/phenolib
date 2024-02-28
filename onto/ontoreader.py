@@ -42,6 +42,14 @@ class OntoReader:
             if not el.name:
                 continue
 
+            if el.obsolete:
+                replacementId = el.id
+                for idd in el.replaced_by:
+                    replacementId = idd.id
+                    break
+                self.reverse_alt_ids[el.id] = replacementId
+                continue
+
             self.terms[el.id] = el.name
             if el.alternate_ids:
                 alt_id_list = []

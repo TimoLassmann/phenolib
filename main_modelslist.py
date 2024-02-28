@@ -65,7 +65,7 @@ class ModelsList:
                 print('Term {} from the models file does not exist.'.format(hpoId))
                 continue
             if flag.lower() == 'y':
-                self.modelsData.append(hpoId)
+                self.modelsData.append(consolidatedHPOId)
 
     def getBestModelForTerm(self, term: str, semsim: str, useIC=True, threshold=0.0):
         if term in self.modelsData:
@@ -98,7 +98,7 @@ def main():
     modelsListFile = 'resources/example_models.list'
     modelsList = ModelsList(modelsListFile)
 
-    max, maxVal = modelsList.getBestModelForTerm('HP:0000252', 'lin')
+    max, maxVal = modelsList.getBestModelForTerm('HP:0001248', 'lin')
     if max:
         print('{} - {}'.format(max, maxVal))
 
