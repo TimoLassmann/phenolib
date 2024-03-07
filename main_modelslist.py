@@ -198,12 +198,13 @@ def main():
     print(hpo_terms)
     # modelsListFile = current_dir + "/resources/example_models.list"
     modelsList = ModelsList(modelsListFile)
+    with open(outfile_name, 'w') as file:        
+        for hpo in hpo_terms:
+            max, maxVal = modelsList.getBestModelForTerm(hpo, 'lin')
 
-    for hpo in hpo_terms:
-        max, maxVal = modelsList.getBestModelForTerm(hpo, 'lin')
-
-        if max:
-            print("{} - {}".format(max, maxVal))
+            if max:
+                file.write("{},{}\n".format(max, maxVal))
+                
 
 
 if __name__ == "__main__":
