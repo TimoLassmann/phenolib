@@ -200,10 +200,18 @@ def main():
     modelsList = ModelsList(modelsListFile)
     with open(outfile_name, 'w') as file:        
         for hpo in hpo_terms:
-            max, maxVal = modelsList.getBestModelForTerm(hpo, 'lin')
+            try:
+                max, maxVal = modelsList.getBestModelForTerm(hpo, 'lin')
+                if max:
+                    file.write("{},{}\n".format(max, maxVal))
+                
+            except Exception:
+                file.write("{}\n".format(hpo))
+                
+            # max, maxVal = modelsList.getBestModelForTerm(hpo, 'lin')
 
-            if max:
-                file.write("{},{}\n".format(max, maxVal))
+            # if max:
+            #     file.write("{},{}\n".format(max, maxVal))
                 
 
 
